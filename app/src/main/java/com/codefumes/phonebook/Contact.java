@@ -45,11 +45,4 @@ public class Contact {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public static void Relaunch(Activity context){
-        context.finish();
-        context.overridePendingTransition(0, 0);
-        context.startActivity(context.getIntent());
-        context.overridePendingTransition(0, 0);
-    }
 }

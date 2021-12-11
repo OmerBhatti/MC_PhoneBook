@@ -68,18 +68,20 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             callButton = itemView.findViewById(R.id.call);
             itemView.setOnClickListener(view->{
                 int id = contact.getId();
-                Toast.makeText(context,"Edit",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context,AddContact.class);
+                intent.putExtra("ID",id);
+                context.startActivity(intent);
             });
             itemView.setOnLongClickListener(view -> {
                 new AlertDialog.Builder(context)
-                        .setTitle("Delete!")
+                        .setTitle("Delete")
                         .setMessage("Do you really want to Delete?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 int id = contact.getId();
                                 _DBHelper.removeContact(id);
-                                Contact.Relaunch(context);
+                                MainActivity.Relaunch(context);
                                 Toast.makeText(context, contact.name+" Deleted", Toast.LENGTH_SHORT).show();
                             }})
                         .setNegativeButton(android.R.string.no, null).show();

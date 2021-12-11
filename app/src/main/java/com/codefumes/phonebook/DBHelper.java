@@ -44,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateActivity(Contact contact){
+    public void editContact(Contact contact){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(CONTACT_NAME,contact.getName());

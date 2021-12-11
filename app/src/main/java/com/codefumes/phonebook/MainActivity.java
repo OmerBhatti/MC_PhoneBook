@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -46,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
     public void AddContact(View view){
         Intent intent = new Intent(MainActivity.this,AddContact.class);
         startActivity(intent);
+    }
+
+    public static void Relaunch(Activity context){
+        context.finish();
+        context.overridePendingTransition(0, 0);
+        context.startActivity(context.getIntent());
+        context.overridePendingTransition(0, 0);
     }
 
 }
