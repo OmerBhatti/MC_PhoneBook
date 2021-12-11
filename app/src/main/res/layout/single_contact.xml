@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foregroundTint="#FFFFFF"
     android:padding="10sp"
     android:paddingBottom="0dp">
 
@@ -58,9 +59,9 @@
             android:id="@+id/imageView"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="#E4E4E4"
-            android:padding="10sp"
-            tools:srcCompat="@drawable/person" />
+            android:background="#F1F1F1"
+            android:padding="5sp"
+            android:src="@drawable/person" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
