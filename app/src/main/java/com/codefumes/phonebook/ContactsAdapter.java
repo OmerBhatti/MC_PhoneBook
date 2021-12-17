@@ -22,9 +22,11 @@ import java.util.ArrayList;
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
     ArrayList<Contact> contacts;
     Activity context;
+    DBHelper _DBHelper;
     public ContactsAdapter(Activity context,ArrayList<Contact> contacts) {
         this.context = context;
         this.contacts = contacts;
+        _DBHelper = new DBHelper(context);
     }
 
     @NonNull
@@ -65,7 +67,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             emailTxt = itemView.findViewById(R.id.email);
             callButton = itemView.findViewById(R.id.call);
             itemView.setOnClickListener(view->{
-                //edit
+                int id = contact.getId();
                 Toast.makeText(context,"Edit",Toast.LENGTH_SHORT).show();
             });
             itemView.setOnLongClickListener(view -> {
@@ -75,7 +77,10 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
+                                int id = contact.getId();
+                                _DBHelper.removeContact(id);
+                                Contact.Relaunch(context);
+                                Toast.makeText(context, contact.name+" Deleted", Toast.LENGTH_SHORT).show();
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
                 return false;

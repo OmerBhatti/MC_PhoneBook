@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recycleView;
     private RecyclerView.LayoutManager layoutManager;
     private ContactsAdapter adapter;
+    DBHelper _DBHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +27,25 @@ public class MainActivity extends AppCompatActivity {
         recycleView = findViewById(R.id.contactsList);
         layoutManager = new LinearLayoutManager(MainActivity.this);
         recycleView.setLayoutManager(layoutManager);
-
-        contacts.add(new Contact("M Omer Sharif","+923364135517","omerbhatti34@gmail.com"));
-        contacts.add(new Contact("Aazam Jutt","+923123456788","bcsf18m036@pucit.edu.pk"));
+        _DBHelper = new DBHelper(MainActivity.this);
+        contacts = _DBHelper.getAllContacts();
 
         adapter = new ContactsAdapter(MainActivity.this,contacts);
         recycleView.setAdapter(adapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        contacts = _DBHelper.getAllContacts();
+        adapter = new ContactsAdapter(MainActivity.this,contacts);
+        recycleView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void AddContact(View view){
+        Intent intent = new Intent(MainActivity.this,AddContact.class);
+        startActivity(intent);
+    }
+
 }

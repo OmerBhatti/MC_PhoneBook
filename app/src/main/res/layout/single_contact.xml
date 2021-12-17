@@ -45,7 +45,8 @@
         app:icon="@drawable/phone"
         app:iconGravity="end"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image" />
+        app:layout_constraintTop_toTopOf="@+id/image"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/image"

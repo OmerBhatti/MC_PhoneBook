@@ -1,18 +1,17 @@
 package com.codefumes.phonebook;
 
+import android.app.Activity;
+
 public class Contact {
-    public static int idCounter = 0;
     public int id ;
     public String name;
     public String phoneNumber;
     public String email;
 
     public Contact(String name, String phoneNumber, String email) {
-        this.id = idCounter;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.idCounter++;
     }
 
     public int getId() {
@@ -45,5 +44,12 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public static void Relaunch(Activity context){
+        context.finish();
+        context.overridePendingTransition(0, 0);
+        context.startActivity(context.getIntent());
+        context.overridePendingTransition(0, 0);
     }
 }
