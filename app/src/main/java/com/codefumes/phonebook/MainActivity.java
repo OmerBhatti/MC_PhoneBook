@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(call_intent);
                     return true;
                 case R.id.repo:
-                    Intent repo_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"));
+                    Intent repo_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/OmerBhatti/MC_PhoneBook/commits/master"));
                     startActivity(repo_intent);
                     return true;
                 case R.id.exit:
