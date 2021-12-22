@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PhoneBook</string>
+    <string name="OPEN">OPEN</string>
+    <string name="CLOSE">CLOSE</string>
 </resources>
